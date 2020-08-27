@@ -10,7 +10,7 @@ public class PlatformController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Doodle") &&
-            collision.relativeVelocity.y < 0)
+            collision.relativeVelocity.y <= 0)
         {
             var doodle = collision.gameObject.GetComponent<Doodle>();
             doodle.Jump(JumpForce);
