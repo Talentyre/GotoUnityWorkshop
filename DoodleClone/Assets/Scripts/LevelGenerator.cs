@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -41,7 +39,9 @@ public class LevelGenerator : MonoBehaviour
              _previousPlatformPosition.y + Random.Range(1f, 1.5f),
             0);
 
-        Instantiate(PlatformPrefab, position, Quaternion.identity, transform);
+        var platformObject = Instantiate(PlatformPrefab, position, Quaternion.identity, transform);
+        platformObject.GetComponent<OffScreenCleaner>().OnObjectClean += SpawnPlatform;
+        
         _previousPlatformPosition = position;
     }
 }

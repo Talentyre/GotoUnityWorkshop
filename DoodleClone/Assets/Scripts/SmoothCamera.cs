@@ -17,7 +17,7 @@ public class SmoothCamera : MonoBehaviour
         // si la position Y de la target est supérieure à celle de la caméra
         if (_target.position.y > transform.position.y)
         {
-            var targetPos = new Vector3(0, _target.position.y, transform.position.z);
+            var targetPos = new Vector3(transform.position.x, _target.position.y, transform.position.z);
             transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, _smoothTime);
         }
     }
