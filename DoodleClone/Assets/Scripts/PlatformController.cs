@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
     [SerializeField]
     private float JumpForce = 10f;
+
+    public event Action OnDoodleHit;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -14,6 +15,8 @@ public class PlatformController : MonoBehaviour
         {
             var doodle = collision.gameObject.GetComponent<Doodle>();
             doodle.Jump(JumpForce);
+            
+            OnDoodleHit?.Invoke();
         }
     }
 }
